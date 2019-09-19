@@ -21,5 +21,5 @@
   
   <h2>Proof Of Work</h2>
   <h4><a href="https://ibb.co/hLKkjF8"><img src="https://i.ibb.co/7jGH5ty/WebAPI.png" tag="Check More" alt="WebAPI" border="0"></a></h4>
-   <h4><a href="https://ibb.co/FYQw0gS"><img src="https://i.ibb.co/FYQw0gS/Whats-App-Image-2019-09-19-at-09-33-24.jpg" alt="Whats-App-Image-2019-09-19-at-09-33-24" border="0"></a></h4>
+   <h4><a href="https://ibb.co/FYQw0gS"><img src="https://i.ibb.co/LgTtJnL/Whats-App-Image-2019-09-19-at-09-33-24.jpg" border="0"></a></h4>
    <a href="https://ibb.co/x5GDhpG"><img src="https://i.ibb.co/x5GDhpG/Web-API-Readed.png" alt="Web-API-Readed" border="0"></a>
