@@ -9,46 +9,27 @@
 
 namespace ResponseServer
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-
-    [DataContract]
+    
     public partial class bizCard
     {
-        [JsonProperty]
         public int Id { get; set; }
-        [JsonProperty]
         public int id_owner { get; set; }
-        [JsonProperty]
         public string Nume { get; set; }
-        [JsonProperty]
         public string Prenume { get; set; }
-        [JsonProperty]
         public string website { get; set; }
-        [JsonProperty]
         public string phone1 { get; set; }
-        [JsonProperty]
         public string phone2 { get; set; }
-        [JsonProperty]
         public string fax { get; set; }
-        [JsonProperty]
         public string bizName { get; set; }
-        [JsonProperty]
         public string adresa { get; set; }
-        [JsonProperty]
         public string regCom { get; set; }
-        [JsonProperty]
         public string codCIF { get; set; }
-        [JsonProperty]
         public string Functie { get; set; }
-        [JsonProperty]
         public string email { get; set; }
-        [JsonProperty]
         public string imagePath { get; set; }
-        
-
+    
         public virtual user user { get; set; }
     }
 }

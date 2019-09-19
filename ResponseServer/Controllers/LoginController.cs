@@ -15,9 +15,11 @@ namespace ResponseServer.Controllers
         //[Route("api/create")]
         public async Task<string> Login()
         {
+            //LogEngines.LogEngine.Write("Login Request...");
             var filesProvider = await Request.Content.ReadAsFormDataAsync();
 
             var username = filesProvider[0];
+            LogEngines.LogEngine.Write("Login Request...",username);
             var password = filesProvider[1];
             //var email = filesProvider[2];
             return Queries.LogIn(username, password);

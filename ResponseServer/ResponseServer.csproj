@@ -1,5 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -49,9 +49,15 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestfulRouting, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestfulRouting.1.6.0\lib\RestfulRouting.dll</HintPath>
@@ -93,14 +99,14 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Tesseract, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Genesis.Tesseract4.4.0.2.11\lib\net47\Tesseract.dll</HintPath>
+    </Reference>
     <Reference Include="WebActivator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivator.1.0.0.0\lib\WebActivator.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -110,47 +116,43 @@
     <Reference Include="System.Web.Http.WebHost">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bizAppDataBase.Context.tt">
+    <Content Include="bcservmodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>bizAppDataBase.Context.cs</LastGenOutput>
-      <DependentUpon>bizAppDataBase.edmx</DependentUpon>
+      <DependentUpon>bcservmodel.edmx</DependentUpon>
+      <LastGenOutput>bcservmodel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="bizAppDataBase.tt">
+    <Content Include="bcservmodel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>bizAppDataBase.edmx</DependentUpon>
-      <LastGenOutput>bizAppDataBase.cs</LastGenOutput>
+      <DependentUpon>bcservmodel.edmx</DependentUpon>
+      <LastGenOutput>bcservmodel.cs</LastGenOutput>
     </Content>
     <Content Include="Global.asax" />
     <Content Include="index.html" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AuthKey.cs">
-      <DependentUpon>bizAppDataBase.tt</DependentUpon>
+      <DependentUpon>bcservmodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="bizAppDataBase.Context.cs">
+    <Compile Include="bcservmodel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>bizAppDataBase.Context.tt</DependentUpon>
+      <DependentUpon>bcservmodel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="bizAppDataBase.cs">
+    <Compile Include="bcservmodel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>bizAppDataBase.tt</DependentUpon>
+      <DependentUpon>bcservmodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="bizAppDataBase.Designer.cs">
+    <Compile Include="bcservmodel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>bizAppDataBase.edmx</DependentUpon>
+      <DependentUpon>bcservmodel.edmx</DependentUpon>
     </Compile>
     <Compile Include="bizCard.cs">
-      <DependentUpon>bizAppDataBase.tt</DependentUpon>
+      <DependentUpon>bcservmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\CreateUserController.cs" />
@@ -159,6 +161,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Extensii.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -166,24 +169,25 @@
     <Compile Include="Queries.cs" />
     <Compile Include="Routes.cs" />
     <Compile Include="user.cs">
-      <DependentUpon>bizAppDataBase.tt</DependentUpon>
+      <DependentUpon>bcservmodel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="bizAppDataBase.edmx">
+    <EntityDeploy Include="bcservmodel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>bizAppDataBase.Designer.cs</LastGenOutput>
+      <LastGenOutput>bcservmodel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="bizAppDataBase.edmx.diagram">
-      <DependentUpon>bizAppDataBase.edmx</DependentUpon>
+    <Content Include="bcservmodel.edmx.diagram">
+      <DependentUpon>bcservmodel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Web.Config" />
+    <None Include="Web.Debug.Config">
+      <DependentUpon>Web.Config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="Web.Release.Config">
+      <DependentUpon>Web.Config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +196,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogEngine\LogEngine.csproj">
+      <Project>{00A4247D-82EC-44B1-A62A-89810F5E7C8B}</Project>
+      <Name>LogEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -222,8 +232,10 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Genesis.Tesseract4.4.0.2.11\build\Genesis.Tesseract4.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Genesis.Tesseract4.4.0.2.11\build\Genesis.Tesseract4.targets'))" />
   </Target>
+  <Import Project="..\packages\Genesis.Tesseract4.4.0.2.11\build\Genesis.Tesseract4.targets" Condition="Exists('..\packages\Genesis.Tesseract4.4.0.2.11\build\Genesis.Tesseract4.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

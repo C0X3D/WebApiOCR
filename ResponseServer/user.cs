@@ -11,15 +11,14 @@ namespace ResponseServer
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-
+    
     public partial class user
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public user()
         {
-            this.bizCards = new HashSet<bizCard>();
             this.AuthKeys = new HashSet<AuthKey>();
+            this.bizCards = new HashSet<bizCard>();
         }
     
         public int Id { get; set; }
@@ -28,10 +27,8 @@ namespace ResponseServer
         public string email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        [DataMember]
-        public virtual ICollection<bizCard> bizCards { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuthKey> AuthKeys { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<bizCard> bizCards { get; set; }
     }
 }

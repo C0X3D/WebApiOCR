@@ -4,28 +4,28 @@
     <title>Product App</title>
 </head>
 <body>
-    <div id="response">Here Will be displayed Response</div>
+    <div id="response">IIS Configured OK Check DB Config here /api/users </div>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
 
 
 
     <script>
-        $(document).ready(function () {
-            var f = {};
-            f.url = '@Url.Action("CreateUser","api/Users")';
-            f.type = "POST";
-            //f.dataType = "json";
-            f.dataType = { username: "uname" };
-           // f.dataType = JSON.stringify({ jsonDetails: null, username: "uname", password: "password", email: "c@c.ro" });
-            f.contentType = "application/string";
-            f.succcess = function (response) {
-                alert("Success");
-            };
-            f.error = function (response) {
-                alert("Failure");
-            };
-            $.ajax(f);
-        });
+        //$(document).ready(function () {
+        //    var f = {};
+        //    f.url = '@Url.Action("CreateUser","api/Users")';
+        //    f.type = "POST";
+        //    //f.dataType = "json";
+        //    f.dataType = { username: "uname" };
+        //   // f.dataType = JSON.stringify({ jsonDetails: null, username: "uname", password: "password", email: "c@c.ro" });
+        //    f.contentType = "application/string";
+        //    f.succcess = function (response) {
+        //        alert("Success");
+        //    };
+        //    f.error = function (response) {
+        //        alert("Failure");
+        //    };
+        //    $.ajax(f);
+        //});
 
 
 

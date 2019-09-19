@@ -24,7 +24,7 @@ namespace ResponseServer.Controllers
             if (!Queries.UserExist(username, email))
             {
                 // string jsonDetails = "";
-                msg = Queries.CreateUser(username, password, email);
+                msg = Queries.CreateUserAsync(username, password, email);
             }
             else
             {

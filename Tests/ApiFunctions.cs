@@ -18,11 +18,12 @@ namespace Tests
 
         public static async Task<string> UploadImage(string path)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, Statics.WebLink + "/api/upload");
+            var request = new HttpRequestMessage(HttpMethod.Post, Statics.WebLink + "/api/upload?name=" + Statics.AuthName);
             var content = new MultipartFormDataContent();
 
             byte[] byteArray = File.ReadAllBytes(path);
             content.Add(new ByteArrayContent(byteArray), "file", path);
+            
             request.Content = content;
 
             var response = await client.SendAsync(request);
@@ -30,8 +31,21 @@ namespace Tests
 
             return await response.Content.ReadAsStringAsync();
         }
+        //public static async Task<string> UploadImage(byte[] path)
+        //{
+        //    var request = new HttpRequestMessage(HttpMethod.Post, Statics.WebLink + "/api/upload");
+        //    var content = new MultipartFormDataContent();
 
-        internal static async Task<string> Login(string v1, string v2)
+        //    byte[] byteArray = File.ReadAllBytes(path);
+        //    content.Add(new ByteArrayContent(byteArray), "file", path);
+        //    request.Content = content;
+
+        //    var response = await client.SendAsync(request);
+        //    response.EnsureSuccessStatusCode();
+
+        //    return await response.Content.ReadAsStringAsync();
+        //}
+        public static async Task<string> Login(string v1, string v2)
         {
             
             List<KeyValuePair<string, string>> pairs = new List<KeyValuePair<string, string>>();
@@ -45,8 +59,12 @@ namespace Tests
 
             using (var client = new HttpClient())
             {
+                //HttpContext.Current.Server.ScriptTimeout = 300;
                 //client.PostAsync
-                HttpResponseMessage response = client.PostAsync(Statics.WebLink + "/api/Login", content).GetAwaiter().GetResult();  // Blocking call!  
+                
+                HttpResponseMessage response = client.PostAsync(Statics.WebLink + "/api/Login", content,System.Threading.CancellationToken.None).GetAwaiter().GetResult();  // Blocking call!  
+                
+                //HttpContext.Current.Server.ScriptTimeout = 300;
                 if (response.IsSuccessStatusCode)
                 {
 
@@ -109,7 +127,7 @@ namespace Tests
             pairs.Add(new KeyValuePair<string, string>("email", email));
 
             FormUrlEncodedContent content = new FormUrlEncodedContent(pairs);
-            var responseString = "";
+            var responseString = "Request Sent";
 
             using (var client = new HttpClient())
             {
@@ -117,13 +135,19 @@ namespace Tests
                 HttpResponseMessage response =  client.PostAsync(Statics.WebLink + "/api/CreateUser",content).GetAwaiter().GetResult();  // Blocking call!  
                 if (response.IsSuccessStatusCode)
                 {
-                    
+
                     await response.Content.ReadAsStringAsync().ContinueWith((task) =>
                     {
-                        responseString = task.Result;
-                        //deserialized = JsonConvert.DeserializeObject<string>(customerJsonString);
-
+                        if (!task.IsFaulted)
+                            responseString = task.Result;
+                        
+                        if (task.IsFaulted)
+                            responseString = "FAULT";
                     });
+                }
+                else
+                {
+                    responseString = "HereIT CRASHES";
                 }
             }
             if (responseString == "Account Created" && autologin)

@@ -52,28 +52,46 @@ namespace ResponseServer
             }
         }
 
-        public static string CreateUser(string user,string password,string email)
+        public static string CreateUserAsync(string user,string password,string email)
         {
             string resp = "Error";
             using (var db = new bcservEntities())
             {
-                db.users.Add(new user {email = email,username = user,password = password });//  return q;
-                int q = db.SaveChanges();
-                if(q > 0)
+                try
                 {
-                    resp = "Account Created";
-                    //Creating AUTH KEY
-                    //var use = (from b in db.users where b.username == user && b.password == password select b).FirstOrDefault();
-                    //No auth key needed for this thing 
-                    //use.AuthKeys.Add(new AuthKey() {authstring = GenerateAuth(user), expiration = DateTime.Now.AddDays(30)});
-                    //db.SaveChanges();
+                    user x = new user();
+                    x.bizCards = null;
+                    x.AuthKeys = null;
+                    x.email = email;
+                    x.username = user;
+                    x.password = password;
+                    resp = "Here It Crashes.";
+                    db.users.Add(x);//  return q;                   
+                    int q = db.SaveChanges();
+                    if (q > 0)
+                    {
+                        resp = "Account Created";
+                        return resp;
+                        //Creating AUTH KEY
+                        //var use = (from b in db.users where b.username == user && b.password == password select b).FirstOrDefault();
+                        //No auth key needed for this thing 
+                        //use.AuthKeys.Add(new AuthKey() {authstring = GenerateAuth(user), expiration = DateTime.Now.AddDays(30)});
+                        //db.SaveChanges();
+                    }
+                    else
+                    {
+                        resp = "Error cannot create user reason DB ERROR";
+                        return resp;
+                    }
                 }
-                else
+                catch
                 {
-                    resp = "Error cannot create user reason DB ERROR";
+                  //  resp = "Error ON LINE 81";
+
                 }
 
             }
+           
             return resp;
         }
 
@@ -91,26 +109,38 @@ namespace ResponseServer
         public static string LogIn(string id, string pw)
         {
             user toRet = new user();
-
+            bool response = false;
             if (id.Contains("@"))
             {
                 using (var db = new bcservEntities())
                 {
 
                     toRet = (from p in db.users where p.email == id && p.password == pw select p).FirstOrDefault();
-                   // return q;
+                    if ((from p in db.users where p.email == id && p.password == pw select p).Count() > 0)
+                    {
+                        response = true;
+                    }
+                    // return q;
                 }
             }
             else
             {
                 using (var db = new bcservEntities())
                 {
-
+                    
                     toRet = (from p in db.users where p.username == id && p.password == pw select p).FirstOrDefault();
+                    if ((from p in db.users where p.username == id && p.password == pw select p).Count() > 0)
+                    {
+                        response = true;
+                    }
                     // return q;
                 }
             }
+            if(response)
             return "Login succesfull.";
+            else
+                return "User Not Found.";
+
         }
         
         public static user User(int userID)

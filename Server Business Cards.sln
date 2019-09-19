@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bizAPIKey", "bizAPIKey\bizA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlyAndroidCamera", "..\OnlyAndroidCamera\OnlyAndroidCamera\OnlyAndroidCamera.csproj", "{AA28E080-A89C-483E-816B-A7F416218AB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{A1FB2269-F47C-458C-B2F2-96C23589EEB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogEngine", "LogEngine\LogEngine.csproj", "{00A4247D-82EC-44B1-A62A-89810F5E7C8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,14 @@ Global
 		{AA28E080-A89C-483E-816B-A7F416218AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA28E080-A89C-483E-816B-A7F416218AB4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AA28E080-A89C-483E-816B-A7F416218AB4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A1FB2269-F47C-458C-B2F2-96C23589EEB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1FB2269-F47C-458C-B2F2-96C23589EEB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1FB2269-F47C-458C-B2F2-96C23589EEB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1FB2269-F47C-458C-B2F2-96C23589EEB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A4247D-82EC-44B1-A62A-89810F5E7C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A4247D-82EC-44B1-A62A-89810F5E7C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A4247D-82EC-44B1-A62A-89810F5E7C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A4247D-82EC-44B1-A62A-89810F5E7C8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
