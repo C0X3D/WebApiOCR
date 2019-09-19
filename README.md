@@ -3,7 +3,7 @@
   <h4>Project Contains</h4>
   1.WebAPI(C#) - IIS Server<br>
   2.msSQL + EntityFramework<br>
-  3.Xanmarin Client Link : <a href="">Here(To Be Uploaded)</a><br>
+  3.Xanmarin Client Link : <a href="https://github.com/C0X3D/bcserv-MobileApp">Here</a><br>
   4.APIfunctions Integrated(Tests.APIFunctions.{functionName})<br>
   5.OCR implementations (Server Sided)<br>
   
