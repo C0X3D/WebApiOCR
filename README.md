@@ -17,6 +17,7 @@
   <h2>Help</h2>
   <h4>Use the help section in Issues</h4>
   1.Check the paths in source code.<br>
+        Tests.Statics.WebLink = @"http://host/wesbsite";<br>
   2.Wait for documentation.<br>
   
   <h2>Proof Of Work</h2>
